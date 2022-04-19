@@ -10,13 +10,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 //--------------Route du application ------------------------------------------
-//Route::get('/', function () {return view('welcome');});
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {return view('welcome');});
 Route::match(['get', 'post'], '/', [App\Http\Controllers\ConnexionController::class, 'login'])->name('login');
-Route::match(['get', 'post'], '/home', [App\Http\Controllers\ConnexionController::class, 'login'])->name('login');
-Route::match(['get', 'post'], '/login', [App\Http\Controllers\ConnexionController::class, 'login'])->name('login');
 Route::match(['get', 'post'], '/connexion', [App\Http\Controllers\ConnexionController::class, 'login'])->name('connexion');
 Route::match(['get', 'post'], '/motdepasseoublie', [App\Http\Controllers\ConnexionController::class, 'motdepasseoublie'])->name('motdepasseoublie');
 Route::get('/dashboard', [App\Http\Controllers\ConnexionController::class, 'dashboard'])->name('dashboard');
