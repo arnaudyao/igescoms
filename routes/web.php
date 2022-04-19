@@ -19,7 +19,7 @@ Route::get('/dashboard', [App\Http\Controllers\ConnexionController::class, 'dash
 Route::get('/reload-captcha', [App\Http\Controllers\ConnexionController::class, 'reloadCaptcha'])->name('reloadCaptcha');
 
 //--------------Route du parametrage systeme------------------------------------------
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth']], function ()  {
     Route::resources([
         'roles' => App\Http\Controllers\RoleController::class,
         'users' => App\Http\Controllers\UserController::class,
