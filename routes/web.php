@@ -20,7 +20,7 @@ Route::get('/reload-captcha', [App\Http\Controllers\ConnexionController::class, 
 
 //--------------Route du parametrage systeme------------------------------------------
 Route::group(['middleware' => ['auth']], function () {
-    Route::resources([
+    Route::resources( [
         'roles' => App\Http\Controllers\RoleController::class,
         'users' => App\Http\Controllers\UserController::class,
         'permissions' => App\Http\Controllers\PermissionController::class,
