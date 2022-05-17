@@ -219,19 +219,44 @@
 
                             ?>
                                 <tr>
-                                    <td>{{ $res->code_prod }}</td>
+                                    <td>
+                                        {{ $res->code_prod }}
+                                        <input type="hidden" class="form-control" name="num_prod/{{ $res->code_prod }}" value="{{$res->num_prod}}"/>
+                                    </td>
                                     <td>{{ $res->code_barre_prod }}</td>
                                     <td>{{ $res->lib_prod }}</td>
-                                    <td align="center">{{ $res->qte_lcomc }}</td>
+                                    <td align="center">
+                                        {{ $res->qte_lcomc }}
+                                        <input type="hidden" class="form-control" name="qte_lcomc/{{ $res->code_prod }}" value="{{$res->qte_lcomc}}"/>
+                                    </td>
                                     <td align="center">{{ $res->remise_lcomc }} %</td>
-                                    <td align="right">{{ number_format($res->prix_ht_lcomc,'0',',','.') }}</td>
-                                    <td align="right">{{ number_format($res->prix_ttc_lcomc,'0',',','.') }}</td>
+                                    <td align="right">
+                                        <?php if($flagValide != true) { ?>
+                                        <input type="text" class="form-control" value="{{ $res->prix_ht_lcomc }}" name="prix_ht_lcomc/{{ $res->code_prod }}"/>
+                                        <? }else{ ?>
+                                            {{ number_format($res->prix_ht_lcomc ,'0',',','.')}}
+                                        <?php } ?>
+                                    </td>
+                                    <td align="right">
+                                        <?php if($flagValide != true) { ?>
+                                            <input type="text" class="form-control" value="{{ $res->prix_ttc_lcomc }}" name="prix_ttc_lcomc/{{ $res->code_prod }}"/>
+                                        <? }else{ ?>
+                                            {{ number_format($res->prix_ttc_lcomc ,'0',',','.')}}
+                                        <?php } ?>
+
+                                    </td>
                                     <td align="right">{{ number_format($res->tot_ttc_lcomc ,'0',',','.')}}</td>
                                     <td align="center">
                                         <?php if($flagValide != true) { ?>
-                                        <a href="{{ route($titreRoute.'delete',\App\Helpers\Crypt::UrlCrypt($res->num_bl_lcomc)) }}"
-                                           class="btn btn-danger btn-xs btn-clean btn-icon"
-                                           title="Suprimer"> <i class="la la-trash"></i> </a>
+
+                                            <button type="submit" name="action" value="Modifier" class="btn btn-success btn-xs btn-clean btn-icon">
+                                                <i class="la la-file"></i>
+                                            </button>
+
+                                            <a href="{{ route($titreRoute.'delete',\App\Helpers\Crypt::UrlCrypt($res->num_bl_lcomc)) }}"
+                                               class="btn btn-danger btn-xs btn-clean btn-icon"
+                                               title="Suprimer"> <i class="la la-trash"></i> </a>
+
                                     <?php } ?>
                                     </td>
                                 </tr>

@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 //--------------Route du application ------------------------------------------
-Route::get('/', function () {return view('welcome');});
+/*Route::get('/', function () {return view('welcome');});*/
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::match(['get', 'post'], '/', [App\Http\Controllers\ConnexionController::class, 'login'])->name('login');
 Route::match(['get', 'post'], '/connexion', [App\Http\Controllers\ConnexionController::class, 'login'])->name('connexion');
 Route::match(['get', 'post'], '/motdepasseoublie', [App\Http\Controllers\ConnexionController::class, 'motdepasseoublie'])->name('motdepasseoublie');
@@ -20,7 +21,7 @@ Route::get('/reload-captcha', [App\Http\Controllers\ConnexionController::class, 
 
 //--------------Route du parametrage systeme------------------------------------------
 Route::group(['middleware' => ['auth']], function () {
-    Route::resources( [
+    Route::resources([
         'roles' => App\Http\Controllers\RoleController::class,
         'users' => App\Http\Controllers\UserController::class,
         'permissions' => App\Http\Controllers\PermissionController::class,
