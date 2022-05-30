@@ -232,14 +232,14 @@
                                     <td align="center">{{ $res->remise_lcomc }} %</td>
                                     <td align="right">
                                         <?php if($flagValide != true) { ?>
-                                        <input type="text" class="form-control" value="{{ $res->prix_ht_lcomc }}" name="prix_ht_lcomc/{{ $res->code_prod }}"/>
+                                        <input type="text" class="form-control" value="{{ $res->prix_ht_lcomc  }}" name="prix_ht_lcomc/{{ $res->code_prod }}"/>
                                         <? }else{ ?>
                                             {{ number_format($res->prix_ht_lcomc ,'0',',','.')}}
                                         <?php } ?>
                                     </td>
                                     <td align="right">
                                         <?php if($flagValide != true) { ?>
-                                            <input type="text" class="form-control" value="{{ $res->prix_ttc_lcomc }}" name="prix_ttc_lcomc/{{ $res->code_prod }}"/>
+                                            <input type="text" class="form-control" value="{{ $res->prix_ttc_lcomc   }}" name="prix_ttc_lcomc/{{ $res->code_prod }}"/>
                                         <? }else{ ?>
                                             {{ number_format($res->prix_ttc_lcomc ,'0',',','.')}}
                                         <?php } ?>
@@ -275,10 +275,10 @@
                             <tr>
                                 <?php
                                     if ($tottvalcomfour == 0){ ?>
-                                <td align="right" nowrap="nowrap">Tva 18% <b style="color: firebrick">TVA NON FACTUREE</b> :</td>
-                                <td align="right">
-                                 <?php       $montt = $tothtlcomfour*0.18;
-                                        echo number_format($montt,'0',',','.');
+                                <!--<td align="right" nowrap="nowrap">Tva 18% <b style="color: firebrick">TVA NON FACTUREE</b> :</td>-->
+                                <!--<td align="right">-->
+                                 <?php       //$montt = $tothtlcomfour*0.18;
+                                        //echo number_format($montt,'0',',','.');
                                     }else{?>
                                 <td align="right" nowrap="nowrap">Tva 18% :</td>
                                 <td align="right">

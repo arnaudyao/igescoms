@@ -302,11 +302,11 @@ where left (c.code_comc, 1) = 'B'
                             LigneCom::where([['num_prod', '=', $form],['num_comc', '=', $idComcli]])->update([
                                 'qte_lcomc' => $form1,
                                 'prix_ht_lcomc' => trim($prixht),
-                                'prix_ttc_lcomc' => $prixttc,
-                                'prix_tva_lcomc' => trim($prixttc)*$tvaval/100,
-                                'tot_ttc_lcomc' => $prixttc * $form1,
-                                'tot_ht_lcomc' => trim($prixht) * $form1,
-                                'tot_tva_lcomc' => (trim($prixttc)*$tvaval/100) * $form1,
+                                'prix_ttc_lcomc' => trim($prixttc),
+                                'prix_tva_lcomc' =>  trim($prixttc*$tvaval/100),
+                                'tot_ttc_lcomc' => trim($prixttc * $form1),
+                                'tot_ht_lcomc' => trim($prixht * $form1),
+                                'tot_tva_lcomc' => trim(($prixttc*$tvaval/100) * $form1),
                             ]);
 
                         }elseif ($lignecomclientrecp->prix_ht_lcomc != $form2){
@@ -322,11 +322,11 @@ where left (c.code_comc, 1) = 'B'
                             LigneCom::where([['num_prod', '=', $form],['num_comc', '=', $idComcli]])->update([
                                 'qte_lcomc' => $form1,
                                 'prix_ht_lcomc' => trim($form2),
-                                'prix_ttc_lcomc' => $prixttc,
+                                'prix_ttc_lcomc' => trim($prixttc),
                                 'prix_tva_lcomc' => trim($form2)*$tvaval/100,
-                                'tot_ttc_lcomc' => $prixttc * $form1,
-                                'tot_ht_lcomc' => trim($form2) * $form1,
-                                'tot_tva_lcomc' => (trim($form2)*$tvaval/100) * $form1,
+                                'tot_ttc_lcomc' => trim($prixttc * $form1),
+                                'tot_ht_lcomc' => trim($form2 * $form1),
+                                'tot_tva_lcomc' => trim(($form2*$tvaval/100) * $form1),
                             ]);
                         }else{
 

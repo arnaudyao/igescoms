@@ -105,10 +105,10 @@ body {
         <tr>
             <?php
             if ($tottvalcomfour == 0){ ?>
-            <td align="right" nowrap="nowrap">Tva 18% <b style="color: firebrick">TVA NON FACTUREE</b> :</td>
-            <td align="right">
-                <?php       $montt = $tothtlcomfour*0.18;
-                echo number_format($montt,'0',',','.');
+            <!--<td align="right" nowrap="nowrap">Tva 18% <b style="color: firebrick">TVA NON FACTUREE</b> :</td>
+            <td align="right">-->
+                <?php      // $montt = $tothtlcomfour*0.18;
+                //echo number_format($montt,'0',',','.');
                 }else{?>
             <td align="right" nowrap="nowrap">Tva 18% :</td>
             <td align="right">
