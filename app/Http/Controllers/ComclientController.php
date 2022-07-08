@@ -240,6 +240,7 @@ where left (c.code_comc, 1) = 'B'
                 }
 
 
+
                 $camp = new LigneCom();
                 $camp->num_comc = $idComcli;
                 $camp->num_prod = $ligneProduit->num_prod;
