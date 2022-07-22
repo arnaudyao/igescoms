@@ -386,7 +386,7 @@ class TableaudebordController extends Controller
             $recherches =  DB::select(
                 DB::raw(
                     "select left (c.code_comc, 1) as code, f.solde_fact, f.flag_fact, f.prix_ttc_fact , bl.date_val_bl ,
-                            c.code_comc , c.solde_comc, c2.nom_cli , c2.prenom_cli
+                            c.code_comc , c.solde_comc, c2.nom_cli , c2.prenom_cli, f.num_fact
                             from facture f
                             inner join bon_livraison bl on f.num_bl = bl.num_bl
                             inner join commandeclient c on bl.num_comc = c.num_comc
