@@ -30,6 +30,7 @@ body {
     <div class="row" >
         <div class="col-lg-6">
             <h2>Facture N°: {{$Result->code_fact}} </h2>
+            <h2>{{$Result->nom_cli}} {{$Result->prenom_cli}}</h2>
         </div>
         <div class="col-lg-6" style="text-align: right">
         </div>

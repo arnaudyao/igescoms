@@ -192,24 +192,46 @@ where left (c.code_comc, 1) = 'B' and c.flag_comc = false
                     //($data['num_prod'].$ligneProduit);
                     // Prix de vente normal x (1-Taux de remise (en %)/100) = prix de vente remisé
                     $remisettc = 0;
-                    if ($data['remise_lcomc'] > 0) {
-                        $c = $data['remise_lcomc'] / 100;
-                        $remise = (1 - $c);
-                        $prxRemise = trim($ligneProduit->prix_ttc * $remise);
-                        $remisettc = trim($ligneProduit->prix_ttc - $prxRemise);
-                        /*********** remise ht************/
-                        $prxRemiseht = trim($ligneProduit->prix_ht * $remise);
-                        $remiseht = trim($ligneProduit->prix_ht - $prxRemiseht);
-                        /*********** remise tva ************/
-                        $prxRemisetva = trim(($ligneProduit->prix_ttc-$ligneProduit->prix_ht) * $remise);
-                        $remisetva = trim($ligneProduit->prix_ttc-$ligneProduit->prix_ht - $prxRemisetva);
+                    if (isset($recupclient->taux_remise_cli)){
+                        if ($recupclient->taux_remise_cli > 0) {
+                            $c = $recupclient->taux_remise_cli / 100;
+                            $remise = (1 - $c);
+                            $prxRemise = trim($ligneProduit->prix_ttc * $remise);
+                            $remisettc = trim($ligneProduit->prix_ttc - $prxRemise);
+                            /*********** remise ht************/
+                            $prxRemiseht = trim($ligneProduit->prix_ht * $remise);
+                            $remiseht = trim($ligneProduit->prix_ht - $prxRemiseht);
+                            /*********** remise tva ************/
+                            $prxRemisetva = trim(($ligneProduit->prix_ttc-$ligneProduit->prix_ht) * $remise);
+                            $remisetva = trim($ligneProduit->prix_ttc-$ligneProduit->prix_ht - $prxRemisetva);
 
-                    } else {
-                        $remisettc = 0;
-                        $prxRemise = trim($ligneProduit->prix_ttc);
-                        $prxRemiseht = trim($ligneProduit->prix_ht);
-                        $prxRemisetva = trim($ligneProduit->prix_ttc-$ligneProduit->prix_ht);
+                        } else {
+                            $remisettc = 0;
+                            $prxRemise = trim($ligneProduit->prix_ttc);
+                            $prxRemiseht = trim($ligneProduit->prix_ht);
+                            $prxRemisetva = trim($ligneProduit->prix_ttc-$ligneProduit->prix_ht);
+                        }
+                    }else{
+                        if ($data['remise_lcomc'] > 0) {
+                            $c = $data['remise_lcomc'] / 100;
+                            $remise = (1 - $c);
+                            $prxRemise = trim($ligneProduit->prix_ttc * $remise);
+                            $remisettc = trim($ligneProduit->prix_ttc - $prxRemise);
+                            /*********** remise ht************/
+                            $prxRemiseht = trim($ligneProduit->prix_ht * $remise);
+                            $remiseht = trim($ligneProduit->prix_ht - $prxRemiseht);
+                            /*********** remise tva ************/
+                            $prxRemisetva = trim(($ligneProduit->prix_ttc-$ligneProduit->prix_ht) * $remise);
+                            $remisetva = trim($ligneProduit->prix_ttc-$ligneProduit->prix_ht - $prxRemisetva);
+
+                        } else {
+                            $remisettc = 0;
+                            $prxRemise = trim($ligneProduit->prix_ttc);
+                            $prxRemiseht = trim($ligneProduit->prix_ht);
+                            $prxRemisetva = trim($ligneProduit->prix_ttc-$ligneProduit->prix_ht);
+                        }
                     }
+
                 }else{
                     $ligneProduit = DB::table('produit')
                         ->where('num_prod', '=', $data['num_prod'])
@@ -219,24 +241,46 @@ where left (c.code_comc, 1) = 'B' and c.flag_comc = false
                     //($data['num_prod'].$ligneProduit);
                     // Prix de vente normal x (1-Taux de remise (en %)/100) = prix de vente remisé
                     $remisettc = 0;
-                    if ($data['remise_lcomc'] > 0) {
-                        $c = $data['remise_lcomc'] / 100;
-                        $remise = (1 - $c);
-                        $prxRemise = trim($ligneProduit->prix_ht * $remise);
-                        $remisettc = trim($ligneProduit->prix_ht - $prxRemise);
-                        /*********** remise ht************/
-                        $prxRemiseht = trim($ligneProduit->prix_ht * $remise);
-                        $remiseht = trim($ligneProduit->prix_ht - $prxRemiseht);
-                        /*********** remise tva ************/
-                        $prxRemisetva = trim(($ligneProduit->prix_ht-$ligneProduit->prix_ht) * $remise);
-                        $remisetva = trim($ligneProduit->prix_ht-$ligneProduit->prix_ht - $prxRemisetva);
+                    if (isset($recupclient->taux_remise_cli)){
+                        if ($recupclient->taux_remise_cli > 0) {
+                            $c = $recupclient->taux_remise_cli / 100;
+                            $remise = (1 - $c);
+                            $prxRemise = trim($ligneProduit->prix_ht * $remise);
+                            $remisettc = trim($ligneProduit->prix_ht - $prxRemise);
+                            /*********** remise ht************/
+                            $prxRemiseht = trim($ligneProduit->prix_ht * $remise);
+                            $remiseht = trim($ligneProduit->prix_ht - $prxRemiseht);
+                            /*********** remise tva ************/
+                            $prxRemisetva = trim(($ligneProduit->prix_ht-$ligneProduit->prix_ht) * $remise);
+                            $remisetva = trim($ligneProduit->prix_ht-$ligneProduit->prix_ht - $prxRemisetva);
 
-                    } else {
-                        $remisettc = 0;
-                        $prxRemise = trim($ligneProduit->prix_ht);
-                        $prxRemiseht = trim($ligneProduit->prix_ht);
-                        $prxRemisetva = trim($ligneProduit->prix_ht-$ligneProduit->prix_ht);
+                        } else {
+                            $remisettc = 0;
+                            $prxRemise = trim($ligneProduit->prix_ht);
+                            $prxRemiseht = trim($ligneProduit->prix_ht);
+                            $prxRemisetva = trim($ligneProduit->prix_ht-$ligneProduit->prix_ht);
+                        }
+                    }else{
+                        if ($data['remise_lcomc'] > 0) {
+                            $c = $data['remise_lcomc'] / 100;
+                            $remise = (1 - $c);
+                            $prxRemise = trim($ligneProduit->prix_ht * $remise);
+                            $remisettc = trim($ligneProduit->prix_ht - $prxRemise);
+                            /*********** remise ht************/
+                            $prxRemiseht = trim($ligneProduit->prix_ht * $remise);
+                            $remiseht = trim($ligneProduit->prix_ht - $prxRemiseht);
+                            /*********** remise tva ************/
+                            $prxRemisetva = trim(($ligneProduit->prix_ht-$ligneProduit->prix_ht) * $remise);
+                            $remisetva = trim($ligneProduit->prix_ht-$ligneProduit->prix_ht - $prxRemisetva);
+
+                        } else {
+                            $remisettc = 0;
+                            $prxRemise = trim($ligneProduit->prix_ht);
+                            $prxRemiseht = trim($ligneProduit->prix_ht);
+                            $prxRemisetva = trim($ligneProduit->prix_ht-$ligneProduit->prix_ht);
+                        }
                     }
+
                 }
 
 
@@ -245,7 +289,11 @@ where left (c.code_comc, 1) = 'B' and c.flag_comc = false
                 $camp->num_comc = $idComcli;
                 $camp->num_prod = $ligneProduit->num_prod;
                 $camp->qte_lcomc = trim($data['qte_lcomc']);
-                $camp->remise_lcomc = trim($data['remise_lcomc']);
+                if (isset($recupclient->taux_remise_cli)){
+                    $camp->remise_lcomc = trim($recupclient->taux_remise_cli);
+                }else{
+                    $camp->remise_lcomc = trim($data['remise_lcomc']);
+                }
                 $camp->remise_ttc_lcomc = trim($remisettc);
                 $camp->prix_ttc_lcomc = $prxRemise;
                 $camp->prix_ht_lcomc = $prxRemiseht;
