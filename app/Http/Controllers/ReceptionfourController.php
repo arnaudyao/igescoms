@@ -118,7 +118,7 @@ class ReceptionfourController extends Controller
                     $recupinfoproduit = DB::table('produit')->where([['num_prod','=',$form]])->first();
 
                     //dd($recupinfoproduit);
-                    if ($recupinfoproduit->prix_ht > $form2){
+                    if ($recupinfoproduit->prix_ht < $form2){
 
 
                     if ($infosfournisseur->flag_tva_fourn == true){
